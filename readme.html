@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VCDQ车辆信息查询系统使用说明</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+        }
+        
+        h1 {
+            color: #000;
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #000;
+            margin-top: 30px;
+            border-left: 4px solid #000;
+            padding-left: 10px;
+        }
+        
+        .content-block {
+            background-color: #f9f9f9;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            border-left: 3px solid #ddd;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight {
+            font-weight: bold;
+            color: #000;
+        }
+        
+        .note {
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>VCDQ车辆信息查询系统使用说明</h1>
+    
+    <h2>开发背景</h2>
+    <div class="content-block">
+        <p>工厂在接受外审时，通常需要提供抽检车辆的包括CCC、QW等重要信息。</p>
+        <p>虽然工厂在完成总装车间车辆交付时，已经将车辆如下信息以html、XML、PDF文件格式上传到本地的VMS平台，可供审计查询，文件种类大致如下：</p>
+        <ul>
+            <li>本车辆已连接的ATACQ-ITEM和已收集的QW-ITEM信息；</li>
+            <li>本车辆打印的特殊标签的label信息；</li>
+            <li>与本车辆相关的所有BIS-ITEM信息；</li>
+            <li>与本车辆相关的CCC信息；</li>
+            <li>与本车辆相关的INSTALLATION信息；</li>
+            <li>与本车辆相关的CLM；</li>
+            <li>与本车辆相关的 Emission inspection report;</li>
+			<li>与本车辆相关的随车检查卡;</li>
+        </ul>
+        <p>但由于以上信息存储在VMS系统中，可读性非常差！且存储在VMS系统中的这些信息还会被定期将符合设定要求的数据ZIP压缩归档，当你要查询已经ZAIP压缩归档的车辆信息时，首先需要将近70M的压缩文件下载的本地，然后解压缩阅读，而类型为XML的文件通常都会因为浏览器出于安全考虑，阻止了从本地XML文件加载远程XSL样式表的原因，找不到对应的XSL格式文件而无法样式化显示，可读性极差！</p>
+        <p class="highlight">基于以上背景，开发了本系统，完美地解决了上述问题，极大地提高对车辆已归档的重要数据查询效率！</p>
+    </div>
+    
+    <h2>使用说明</h2>
+    <div class="content-block">
+        <ul>
+            <li><span class="content>本系统支持按VIN或MIX查询，但MIX仅支持在线数据库查询；</span></li>
+            <li><span class="content">本系统自带VIN校验功能，避免输入错误；</span></li>
+            <li><span class="content">车型选择仅在离线查询时为必填项；</span></li>
+            <li><span class="content">本系统支持对ZIP压缩文件里的指定文件无需下载即可查询的功能要求；</span></li>
+            <li><span class="content">本系统对于查询到的html、xml、pdf文件支持鼠标单击打开查看详情；</span></li>
+			<li><span class="content">本系统支持在线查询和离线查询两种方式的原因是：VMS平台以html、xml、pdf格式，保存了所有已经上传的车辆信息，但在生产数据库中车辆有关MIX和VIN的信息的保留是有时间要求的，到期就会自动在相关的数据库中删除。如果要对已经在数据库中删除的车辆进行信息查询时，就需要你提供车辆的VIN和车型，点击离线查询按钮进行查询；</span></li>
+        </ul>
+    </div>
+</body>
+</html>

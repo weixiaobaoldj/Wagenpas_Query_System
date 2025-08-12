@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>车辆信息查询系统</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 添加Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center">VCDQ 车辆信息查询系统</h2>
+            </div>
+            <div class="card-body">
+                <form id="queryForm">
+                    <div class="mb-3">
+                         <label for="vin_or_mix" class="form-label">VIN或MIX(必填)</label>
+                         <input type="text" class="form-control" id="vin_or_mix" name="vin_or_mix" 
+                                placeholder="输入17位VIN或7位MIX" maxlength="17" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rhfdtyp_2" class="form-label">车型选择（选填；仅在离线查询时必填！）</label>
+                        <select class="form-select" id="rhfdtyp_2" name="rhfdtyp_2">
+                            <option value="">-- 请选择 --</option>
+                            <option value="224-S60">224-S60</option>
+                            <option value="234-S90">234-S90</option>
+                            <option value="238-S90L">238-S90L</option>
+                        </select>
+                    </div>
+                    
+                    <div class="text-center mt-4">
+                        <button type="button" class="btn btn-primary me-2" id="onlineQuery">在线查询</button>
+                        <button type="button" class="btn btn-secondary me-2" id="offlineQuery">离线查询</button>
+                        <button type="button" class="btn btn-warning" id="clearBtn">清除输入</button>
+                    </div>
+                </form>
+                
+                <div id="loading" class="text-center my-4" style="display: none;">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">查询中，请等待......</span>
+                    </div>
+                    <p class="mt-2">查询中，请等待......</p>
+                </div>
+                
+                <div id="resultContainer" class="mt-4" style="display: none;">
+                    <h4 class="mb-3">查询结果：找到如下符合要求的文件，系统支持鼠标单击打开查看详情！</h4>
+                    <div id="fileList" class="list-group"></div>
+                </div>
+                
+                <div id="errorContainer" class="alert alert-danger mt-4" style="display: none;"></div>
+            </div>
+            <div class="card-footer text-muted text-center">
+                <p>制作单位: 大庆沃尔沃汽车制造有限公司IT信息部 2025-8| 版次: V3.0</p>
+                <p><a href="/readme" target="_blank">系统使用说明</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 确认对话框 -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">提示</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="confirmMessage"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/static/js/script.js"></script>
+</body>
+</html>

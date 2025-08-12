@@ -1,0 +1,66 @@
+body {
+    background-color: #f8f9fa;
+}
+
+.card {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+    padding: 1.5rem;
+}
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-footer {
+    padding: 1rem;
+}
+
+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+#loading {
+    min-height: 100px;
+}
+
+#resultContainer {
+    min-height: 200px;
+}
+/* 表单元素间距调整 */
+.form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+/* 输入框和下拉框样式 */
+.form-control, .form-select {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    border: 1px solid #ced4da;
+}
+
+/* 按钮组间距 */
+.text-center > .btn {
+    margin: 0 0.5rem 0.5rem 0;
+}
+/* PDF文件图标样式 */
+.fa-file-pdf {
+    font-size: 1.2em;
+}
+
+/* 文件列表项悬停效果 */
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+.list-group-item .fa-file-pdf {
+    width: 20px;
+    text-align: center;
+}
